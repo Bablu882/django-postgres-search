@@ -55,7 +55,7 @@ def post_search(request):
       # vector = SearchVector('authors')
       # results = Book.objects.annotate(search=vector, headline=SearchHeadline('authors', query, start_sel='<span>', stop_sel='</span>', )).filter(search=query)
 
-      from django.contrib.postgres.search import TrigramSimilarity
+      # from django.contrib.postgres.search import TrigramSimilarity
 
     #   print("#1")
     #   print(Book.objects.filter(title__trigram_similar=q).explain(analyze=True))
