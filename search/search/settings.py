@@ -43,10 +43,41 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-
     'engine',
     'book',
+    # 'haystack',
+    'django_mysql',
+    # 'elasticsearch',
+    'django_elasticsearch_dsl',
+    # 'django_haystack_elasticsearch',
+    'django_elasticsearch_dsl_drf',
+
 ]
+
+
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
+
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+#         'URL': 'http://127.0.0.1:9200/',
+#         'INDEX_NAME': 'haystack',
+#     },
+# }
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+#     },
+# }
+
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,15 +119,25 @@ WSGI_APPLICATION = 'search.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+# 'default': {
+# 'ENGINE': 'django.db.backends.postgresql',
+# 'NAME': 'searchdb',
+# 'USER': 'searchuser',
+# 'PASSWORD': 'searchpass',
+# 'HOST': 'localhost',
+# 'PORT': '',
+# }
+# }
 DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.postgresql',
-'NAME': 'searchdb',
-'USER': 'searchuser',
-'PASSWORD': 'searchpass',
-'HOST': 'localhost',
-'PORT': '',
-}
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'search',
+        'USER': 'root',
+        'PASSWORD': 'webnyxamysqldb',
+        'HOST':'localhost',
+        'PORT':'3306',
+    }
 }
 
 # Password validation

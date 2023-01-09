@@ -20,4 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('engine.urls')),
     path('',include('book.urls')),
+    # path('search/', include('haystack.urls')),
+
+
 ]
