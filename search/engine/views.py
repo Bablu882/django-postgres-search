@@ -62,9 +62,16 @@ def post_searchs(request):
         if form.is_valid():
 
             q = form.cleaned_data['q']
-            results=BookDocument.search().query(Q('fuzzy',title=q)|Q('fuzzy',authors=q))
-            # for res in results:
-            #     print(res)
+            query=q
+            q = Q(
+                'multi_match',
+                query=query,
+                fields=[
+                    'title',
+                    'authors'
+                ],
+                fuzziness='auto')
+            results=BookDocument().search().query(q)
             # results=BookDocument.search().filter(Q('term',title=q)|Q('term',authors=q))
             # results = Book.objects.filter(title__sounds_like=q)
     return render(request,'engine/home.html',{'form':form,'results':results})
